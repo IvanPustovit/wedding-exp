@@ -1,0 +1,75 @@
+/* styles/Input.module.css */
+.input {
+  display: flex;
+  height: 2.5rem;
+  /* h-10 (10 * 0.25rem = 2.5rem) */
+  width: 100%;
+  /* w-full */
+  border-radius: 0.375rem;
+  /* rounded-md (6px) */
+  border: 1px solid var(--input-border, #d1d5db);
+  /* border-input (default: gray-300) */
+  background-color: var(--background, #ffffff);
+  /* bg-background (default: white) */
+  padding-left: 0.75rem;
+  /* px-3 (3 * 0.25rem = 0.75rem) */
+  padding-right: 0.75rem;
+  /* px-3 */
+  padding-top: 0.5rem;
+  /* py-2 (2 * 0.25rem = 0.5rem) */
+  padding-bottom: 0.5rem;
+  /* py-2 */
+  font-size: 1rem;
+  /* text-base (16px) */
+  line-height: 1.5;
+  /* Приблизно відповідає text-base */
+  outline: none;
+  /* focus-visible:outline-none */
+  box-shadow: var(--ring-offset, 0 0 0 0 transparent);
+  /* ring-offset-background */
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  /* Для плавного focus ефекту */
+}
+
+.input::file-selector-button {
+  border: 0;
+  /* file:border-0 */
+  background: transparent;
+  /* file:bg-transparent */
+  font-size: 0.875rem;
+  /* file:text-sm (14px) */
+  font-weight: 500;
+  /* file:font-medium */
+  color: var(--foreground, #000000);
+  /* file:text-foreground (default: black) */
+}
+
+.input::placeholder {
+  color: var(--muted-foreground, #6b7280);
+  /* placeholder:text-muted-foreground (default: gray-500) */
+}
+
+.input:focus-visible {
+  outline: none;
+  /* focus-visible:outline-none */
+  border-color: var(--ring, #2563eb);
+  /* focus-visible:ring-ring (default: blue-600) */
+  box-shadow: 0 0 0 2px var(--ring, #2563eb), 0 0 0 4px var(--ring-offset, #ffffff);
+  /* focus-visible:ring-2 focus-visible:ring-offset-2 */
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  /* disabled:cursor-not-allowed */
+  opacity: 0.5;
+  /* disabled:opacity-50 */
+}
+
+@media (min-width: 768px) {
+  .input {
+    font-size: 0.875rem;
+    /* md:text-sm (14px) */
+    line-height: 1.25rem;
+    /* Приблизно відповідає text-sm */
+  }
+}

@@ -1,0 +1,11 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 50px;
+  padding: 20px;
+  border: 1px solid var(--primary);
+}

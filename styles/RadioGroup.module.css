@@ -1,0 +1,58 @@
+/* styles/RadioGroup.module.css */
+.radioGroup {
+  display: grid;
+  gap: 0.5rem;
+  /* gap-2 (2 * 0.25rem = 0.5rem) */
+}
+
+.radioItem {
+  aspect-ratio: 1/1;
+  /* aspect-square */
+  height: 1rem;
+  /* h-4 (4 * 0.25rem = 1rem) */
+  width: 1rem;
+  /* w-4 */
+  border-radius: 9999px;
+  /* rounded-full */
+  border: 1px solid var(--primary, #2563eb);
+  /* border border-primary (default: blue-600) */
+  color: var(--primary, #2563eb);
+  /* text-primary */
+  background-color: transparent;
+  outline: none;
+  /* focus:outline-none */
+  box-shadow: var(--ring-offset, 0 0 0 0 transparent);
+  /* ring-offset-background */
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.radioItem:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring, #2563eb), 0 0 0 4px var(--ring-offset, #ffffff);
+  /* focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 */
+}
+
+.radioItem:disabled {
+  cursor: not-allowed;
+  /* disabled:cursor-not-allowed */
+  opacity: 0.5;
+  /* disabled:opacity-50 */
+}
+
+.radioIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radioIndicatorCircle {
+  height: 0.625rem;
+  /* h-2.5 (2.5 * 0.25rem = 0.625rem) */
+  width: 0.625rem;
+  /* w-2.5 */
+  border-radius: 9999px;
+  /* Для створення кола */
+  background-color: currentColor;
+  /* fill-current */
+  color: currentColor;
+  /* text-current */
+}
