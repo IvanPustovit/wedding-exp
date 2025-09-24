@@ -52,6 +52,7 @@ const Wedding: React.FC = () => {
 
   return (
     <div className={styles.weddingContainer}>
+    <div className={styles.weddingContainerLiner}></div>
       <div className={styles.ukrainianBg}></div>
       
       {/* Hero Section */}
@@ -113,7 +114,8 @@ const Wedding: React.FC = () => {
                   <p>Місто Гайсин<br />проспект Житній, 1</p>
                 </div>
           </CardHeader>
-          <img src="/vinograd.jpg" alt="Місце проведення весілля" className={styles.venueImage} />
+          <div >
+          <img src="/vinograd.jpg" alt="Місце проведення весілля" className={styles.venueImage} /></div>
           <CardContent>
             <div className={styles.sectionContent}>            
               <LocationMap address={`48.80427465487786, 29.41383327459868`} label={`Місце святкування: м.Гайсин`} />
@@ -138,18 +140,24 @@ const Wedding: React.FC = () => {
           <CardContent>
             <div className={styles.sectionContent}>
               <div className={styles.weddingDetails}>
+              <div>
+              <img src="/zbir.jpg" alt="Збір гостей" className={styles.weddingDetailsImg} />
                 <div className={styles.detailItem}>
                   <h4>13:00</h4>
                   <p>Збір гостей</p>
-                </div>
+                </div></div>
+                <div>
+              <img src="/zbir.jpg" alt="Збір гостей" className={styles.weddingDetailsImg} />
                 <div className={styles.detailItem}>
                   <h4>14:00</h4>
                   <p>Церемонія</p>
-                </div>
+                </div></div>
+                <div>
+              <img src="/zbir.jpg" alt="Збір гостей" className={styles.weddingDetailsImg} />
                 <div className={styles.detailItem}>
                   <h4>15:00</h4>
                   <p>Банкет</p>
-                </div>
+                </div></div>
                 {/* <div className={styles.detailItem}>
                   <h4>🎉 Місце банкету</h4>
                   <p>Ресторан "Українська садиба"<br />вул. Хрещатик, 15, Київ</p>

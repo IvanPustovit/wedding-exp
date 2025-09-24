@@ -2,6 +2,7 @@
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .timeGrid {
@@ -24,14 +25,15 @@
 .timeNumber {
   font-family: 'Georgia', serif;
   font-size: 2rem;
-  color: #8b0000;
+  color: #034e25;
   font-weight: 700;
 }
 
 .timeLabel {
   font-family: 'Georgia', serif;
   font-size: 0.75rem;
-  color: #2f4f4f;
+  font-weight: 800;
+  color: #0f0f0f;
   margin-top: 4px;
 }
 

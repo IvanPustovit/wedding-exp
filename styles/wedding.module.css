@@ -1,16 +1,30 @@
 .weddingContainer {
-  /* Use native document scrolling instead of an inner scroll container.
-     Inner containers with `overflow` can prevent normal page scroll on some devices
-     — making the body/window handle scrolling is more reliable. */
-  /* ensure container at least viewport height so hero-area can be visible */
+  
   min-height: 100vh;
-  overflow: visible;
+  /* overflow: visible; */
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   overscroll-behavior-y: auto;
   background: linear-gradient(135deg, #87ceeb 0%, #f0f8ff 50%, #ffd700 100%);
   position: relative;
   overflow-x: hidden;
+  overflow-y: hidden;
+  
+  z-index: 5;
+}
+
+.weddingContainerLiner {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  
+  background-image: url('/fonmain.jpg');
+  
+  background-size: contain;
+  background-blend-mode: normal;
+  
+  opacity: 0.5;
 }
 
 .ukrainianBg {
@@ -19,11 +33,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image:
+  /* background-image:
     radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 2px, transparent 2px),
     radial-gradient(circle at 80% 20%, rgba(0, 123, 255, 0.1) 2px, transparent 2px),
     radial-gradient(circle at 40% 40%, rgba(220, 20, 60, 0.1) 2px, transparent 2px);
-  background-size: 60px 60px, 80px 80px, 100px 100px;
+  background-size: 60px 60px, 80px 80px, 100px 100px; */
   animation: backgroundFloat 30s ease-in-out infinite;
   z-index: -1;
 }
@@ -95,11 +109,12 @@
 .weddingDate {
   font-family: 'Georgia', serif;
   font-size: 1.8rem;
-  color: #2f4f4f;
+  font-weight: 800;
+  color: #2f04a7;
   margin: 0 0 30px 0;
   font-style: italic;
   justify-self: center;
-  margin-top: 0.5rem;
+  margin-top: 3rem;
 }
 
 .ornamentLarge {
@@ -127,6 +142,8 @@
   transform: translateY(20px);
   transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
   justify-items: center;
+  overflow: hidden;
+  overlay: hidden;
 }
 
 .section.visible {
@@ -235,12 +252,14 @@
 
 .loveStory {
   font-family: 'Georgia', serif;
-  font-size: 1.1rem;
+  font-size: 2.5rem;
+  font-weight: 600;
   color: #2f4f4f;
   line-height: 1.8;
   text-align: center;
   font-style: italic;
   margin-top: 0;
+  
   /* padding: 20px; */
   /* background: rgba(255, 248, 220, 0.3); */
   /* border-radius: 10px; */
@@ -269,13 +288,34 @@
 .detailItem h4 {
   font-family: 'Georgia', serif;
   font-size: 1.3rem;
-  color: #8b0000;
+  color: #1e0441;
   margin: 0 0 15px 0;
 }
 
 .detailItem p {
   color: #2f4f4f;
   line-height: 1.6;
+  font-size: 1.2rem;
+}
+
+.venueImage {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  margin: 20px auto 0 auto;
+  display: block;
+  opacity: 0.9;
+}
+
+.weddingDetailsImg{
+  width: 60%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  margin: 20px auto 0 auto;
+  display: block;
+  opacity: 0.7;
 }
 
 .guestForm {
@@ -383,4 +423,8 @@
   .section {
     padding: 5px 10px;
   }
+  .loveStory { 
+    font-size: 1.2rem;
+    color: #2a16db;
+    }
 }
