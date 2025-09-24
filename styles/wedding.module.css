@@ -1,5 +1,13 @@
 .weddingContainer {
+  /* Use native document scrolling instead of an inner scroll container.
+     Inner containers with `overflow` can prevent normal page scroll on some devices
+     — making the body/window handle scrolling is more reliable. */
+  /* ensure container at least viewport height so hero-area can be visible */
   min-height: 100vh;
+  overflow: visible;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: auto;
   background: linear-gradient(135deg, #87ceeb 0%, #f0f8ff 50%, #ffd700 100%);
   position: relative;
   overflow-x: hidden;
@@ -37,14 +45,19 @@
 }
 
 .heroSection {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  /* opacity: 0; */
+  transform: translateY(20px);
+  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+  /* make sure hero sits above decorative background */
+  position: relative;
+  z-index: 1;
 }
 
 .heroSection.visible {
@@ -53,17 +66,22 @@
 }
 
 .heroContent {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 60px 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(212, 175, 55, 0.3);
+  /* background: rgba(255, 255, 255, 0.92); */
+  padding: 28px;
+  /* border-radius: 16px; */
+  /* box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08); */
+  /* backdrop-filter: blur(8px); */
+  /* border: 2px solid rgba(212, 175, 55, 0.28); */
+  max-width: 980px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .coupleTitle {
   font-family: 'Georgia', serif;
-  font-size: 4rem;
+  /* responsive headline: scales with viewport but stays within reasonable limits */
+  font-size: clamp(5rem, 14vw, 12rem);
   color: #8b0000;
   margin: 0 0 20px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -80,6 +98,8 @@
   color: #2f4f4f;
   margin: 0 0 30px 0;
   font-style: italic;
+  justify-self: center;
+  margin-top: 0.5rem;
 }
 
 .ornamentLarge {
@@ -100,12 +120,13 @@
 }
 
 .section {
-  padding: 80px 20px;
-  max-width: 1200px;
+  padding: 60px 20px;
+  min-height: 100vh;
   margin: 0 auto;
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease-out;
+  transform: translateY(20px);
+  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+  justify-items: center;
 }
 
 .section.visible {
@@ -113,22 +134,57 @@
   transform: translateY(0);
 }
 
+/* Smooth content entrance inside sections when they become visible */
+.sectionContent {
+  /* opacity: 0; */
+  transform: translateY(12px) scale(0.995);
+  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+  will-change: opacity, transform;
+  /* prepare children for stagger */
+  --reveal-stagger: 80ms;
+}
+
+/* When the section becomes visible, reveal the container and its children with a small stagger */
+.section.visible .sectionContent {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger child elements: each direct child will get a small delay based on its index */
+.section.visible .sectionContent > * {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+}
+.section.visible .sectionContent > *:nth-child(1) { transition-delay: calc(var(--reveal-stagger) * 0); opacity: 1; transform: translateY(0); }
+.section.visible .sectionContent > *:nth-child(2) { transition-delay: calc(var(--reveal-stagger) * 1); opacity: 1; transform: translateY(0); }
+.section.visible .sectionContent > *:nth-child(3) { transition-delay: calc(var(--reveal-stagger) * 2); opacity: 1; transform: translateY(0); }
+.section.visible .sectionContent > *:nth-child(4) { transition-delay: calc(var(--reveal-stagger) * 3); opacity: 1; transform: translateY(0); }
+.section.visible .sectionContent > *:nth-child(5) { transition-delay: calc(var(--reveal-stagger) * 4); opacity: 1; transform: translateY(0); }
+.section.visible .sectionContent > *:nth-child(6) { transition-delay: calc(var(--reveal-stagger) * 5); opacity: 1; transform: translateY(0); }
+
+/* Fallback for many children: elements after nth-child(6) will simply appear without further delay */
+.section.visible .sectionContent > *:nth-child(n + 7) { transition-delay: calc(var(--reveal-stagger) * 5); opacity: 1; transform: translateY(0); }
+
 .infoCard,
 .formCard {
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
+  /* background: rgba(255, 255, 255, 0.96); */
+  /* border: 2px solid rgba(212, 175, 55, 0.28); */
+  /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); */
+  /* backdrop-filter: blur(8px); */
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1000px;
+  transition: transform 0.45s cubic-bezier(.2,.9,.2,1), box-shadow 0.35s ease;
 }
 
 .sectionTitle {
   font-family: 'Georgia', serif;
-  font-size: 2.5rem;
+  font-size: 1.9rem; /* mobile-first */
   color: #8b0000;
   text-align: center;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  /* margin-bottom: 18px; */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .coupleInfo {
@@ -184,10 +240,11 @@
   line-height: 1.8;
   text-align: center;
   font-style: italic;
-  padding: 20px;
-  background: rgba(255, 248, 220, 0.3);
-  border-radius: 10px;
-  border-left: 4px solid #d4af37;
+  margin-top: 0;
+  /* padding: 20px; */
+  /* background: rgba(255, 248, 220, 0.3); */
+  /* border-radius: 10px; */
+  /* border-left: 4px solid #d4af37; */
 }
 
 .weddingDetails {
@@ -199,9 +256,9 @@
 .detailItem {
   text-align: center;
   padding: 25px;
-  background: rgba(255, 248, 220, 0.5);
+  /* background: rgba(255, 248, 220, 0.5); */
   border-radius: 10px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  /* border: 1px solid rgba(212, 175, 55, 0.2); */
   transition: transform 0.3s ease;
 }
 
@@ -222,8 +279,9 @@
 }
 
 .guestForm {
-  max-width: 600px;
+  max-width: 660px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .formGroup {
@@ -247,13 +305,13 @@
   width: 100%;
   background: linear-gradient(45deg, #8b0000, #dc143c);
   color: white;
-  font-size: 1.1rem;
-  padding: 15px;
+  font-size: 1.05rem;
+  padding: 14px;
   border: none;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   font-family: 'Georgia', serif;
   font-weight: bold;
-  transition: all 0.3s ease;
+  transition: all 0.22s ease;
 }
 
 .submitButton:hover {
@@ -264,8 +322,8 @@
 
 .footer {
   text-align: center;
-  padding: 60px 20px;
-  background: rgba(255, 255, 255, 0.9);
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.94);
   margin-top: 40px;
 }
 
@@ -294,7 +352,7 @@
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .coupleTitle {
-    font-size: 2.5rem;
+    font-size: 5rem;
   }
 
   .weddingDate {
@@ -323,6 +381,6 @@
   }
 
   .section {
-    padding: 40px 10px;
+    padding: 5px 10px;
   }
 }

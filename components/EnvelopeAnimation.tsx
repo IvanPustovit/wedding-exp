@@ -15,15 +15,15 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
       setIsClicked(true);
       setIsOpening(true);
       
-      // Show redirect message after card appears
-      setTimeout(() => {
-        setShowRedirectMessage(true);
-      }, 2500);
+      // // Show redirect message after card appears
+      // setTimeout(() => {
+      //   setShowRedirectMessage(true);
+      // }, 2000);
       
       // Redirect after 5 seconds total
       setTimeout(() => {
         onOpen();
-      }, 5000);
+      }, 2000);
     }
   };
 
@@ -43,6 +43,7 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
         onClick={handleClick}
       >
         <div className={styles.envelopeFlap}></div>
+        <div className={styles.envelopeFlapBack}></div>
         <div className={styles.envelopeBody}>
           <div className={styles.waxSeal}>
             <span className={styles.sealText}>💕</span>
@@ -51,10 +52,11 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
         {isOpening && (
           <div className={styles.invitationCard}>
             <div className={styles.cardContent}>
-              <h3 className={styles.coupleNames}>Олександр & Марія</h3>
-              <p className={styles.inviteText}>запрошують вас на своє весілля</p>
+              <h3 className={styles.coupleNames}>Запрошення від</h3>
+              <h3 className={styles.coupleNames}>Миколи & Ольги</h3>
+              {/* <p className={styles.inviteText}>запрошують вас на своє весілля</p> */}
               <div className={styles.ornament}>🌻 💙 💛 🌻</div>
-              {showRedirectMessage && (
+              {/* {showRedirectMessage && (
                 <p style={{
                   marginTop: '15px',
                   fontSize: '14px',
@@ -63,7 +65,7 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
                 }}>
                   Переходимо до деталей весілля...
                 </p>
-              )}
+              )} */}
             </div>
           </div>
         )}

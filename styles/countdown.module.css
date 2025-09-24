@@ -1,0 +1,53 @@
+.countdown {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.timeGrid {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.timeBox {
+  /* background: linear-gradient(145deg, #fff8dc, #faf0e6); */
+  /* border: 2px solid rgba(212, 175, 55, 0.35); */
+  padding: 12px 16px;
+  border-radius: 10px;
+  min-width: 72px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.timeNumber {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  color: #8b0000;
+  font-weight: 700;
+}
+
+.timeLabel {
+  font-family: 'Georgia', serif;
+  font-size: 0.75rem;
+  color: #2f4f4f;
+  margin-top: 4px;
+}
+
+.expiredMessage {
+  font-family: 'Georgia', serif;
+  color: #8b0000;
+  background: linear-gradient(45deg,#8b0000,#dc143c);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.1rem;
+  padding: 8px 12px;
+}
+
+@media (max-width: 480px) {
+  .timeGrid { gap: 8px; }
+  .timeBox { min-width: 56px; padding: 10px 12px; }
+  /* .timeNumber { font-size: 2rem; } */
+}

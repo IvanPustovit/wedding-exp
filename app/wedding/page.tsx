@@ -7,6 +7,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import styles from '../../styles/wedding.module.css';
+import Countdown from '@/components/Countdown';
+import LocationMap from '@/components/LocationMap';
+import Calendar from '@/components/Calendar';
 
 const Wedding: React.FC = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -21,19 +24,17 @@ const Wedding: React.FC = () => {
   });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleSections(prev => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = (entry.target as HTMLElement).id;
+          setVisibleSections(prev => new Set(prev).add(id));
+        }
+      });
+    }, { threshold: 0.15 });
 
     const sections = document.querySelectorAll('[data-animate]');
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach((s) => observer.observe(s));
 
     return () => observer.disconnect();
   }, []);
@@ -54,17 +55,22 @@ const Wedding: React.FC = () => {
       <div className={styles.ukrainianBg}></div>
       
       {/* Hero Section */}
-      <section 
+      {/* <section 
         id="hero" 
         data-animate
         className={`${styles.heroSection} ${visibleSections.has('hero') ? styles.visible : ''}`}
       >
         <div className={styles.heroContent}>
-          <h1 className={styles.coupleTitle}>Олександр & Марія</h1>
-          <p className={styles.weddingDate}>25 травня 2024</p>
-          <div className={styles.ornamentLarge}>🌻 💙 💛 🌻</div>
+          <div className={styles.sectionContent}>
+            <h1 className={styles.coupleTitle}>Микола </h1>
+            <p className={styles.weddingDate}>------та------</p>
+            <h1 className={styles.coupleTitle}> Ольга</h1>
+           
+            <div className={styles.ornamentLarge}>🌻 💙 💛 🌻</div>
+            
+          </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Couple Info */}
       <section 
@@ -74,30 +80,50 @@ const Wedding: React.FC = () => {
       >
         <Card className={styles.infoCard}>
           <CardHeader>
-            <CardTitle className={styles.sectionTitle}>Наша історія</CardTitle>
+            <CardTitle className={styles.sectionTitle}>Дорогі наші!</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className={styles.coupleInfo}>
-              <div className={styles.brideGroom}>
-                <h3>Олександр</h3>
-                <p>Син Івана та Ольги Петренків</p>
-                <p>Народився в Києві, любить подорожі та фотографію</p>
-              </div>
-              <div className={styles.heart}>💕</div>
-              <div className={styles.brideGroom}>
-                <h3>Марія</h3>
-                <p>Донька Петра та Наталії Іваненків</p>
-                <p>Народилася в Львові, захоплюється музикою та живописом</p>
-              </div>
+            <div className={styles.sectionContent}>            
+              
+              <p className={styles.loveStory}>
+                У житті трапляються моменти, які хочеться розділити з тими хто по справжньому важливий. Для нас таким моментом стане день коли ми станемо чоловіком та дружиною, запрошуємо Вас стати частиною початку нашої сімейної історії.
+              </p>
             </div>
-            <p className={styles.loveStory}>
-              Ми зустрілися 3 роки тому на фестивалі української культури. 
-              Наша любов розквітла як весняні квіти, і тепер ми готові почати 
-              нове життя разом як одна родина.
-            </p>
           </CardContent>
+          <div style={{ marginTop: 12, display: 'flex', justifyContent: 'center' }}>
+              <Calendar year={2025} month={11} highlightedDay={1} />
+            </div>
+            <div>
+      <p className={styles.weddingDate}>До весілля залишилося</p>
+            <Countdown targetDate={'2025-11-01T00:00:00'} />
+      </div>
         </Card>
       </section>
+
+      <section 
+        id="couple" 
+        data-animate
+        className={`${styles.section} ${visibleSections.has('couple') ? styles.visible : ''}`}
+      >
+        <Card className={styles.infoCard}>
+          <CardHeader>
+            <CardTitle className={styles.sectionTitle}> 🏛️ Місце проведення</CardTitle>
+            <div className={styles.detailItem}>
+                  <h4>Готельно-ресторанний комплекс "VinoGrad</h4>
+                  <p>Місто Гайсин<br />проспект Житній, 1</p>
+                </div>
+          </CardHeader>
+          <img src="/vinograd.jpg" alt="Місце проведення весілля" className={styles.venueImage} />
+          <CardContent>
+            <div className={styles.sectionContent}>            
+              <LocationMap address={`48.80427465487786, 29.41383327459868`} label={`Місце святкування: м.Гайсин`} />
+            </div>
+          </CardContent>        
+            
+        </Card>
+      </section>
+
+      
 
       {/* Wedding Details */}
       <section 
@@ -107,26 +133,57 @@ const Wedding: React.FC = () => {
       >
         <Card className={styles.infoCard}>
           <CardHeader>
-            <CardTitle className={styles.sectionTitle}>Деталі весілля</CardTitle>
+            <CardTitle className={styles.sectionTitle}>Програма дня</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className={styles.weddingDetails}>
-              <div className={styles.detailItem}>
-                <h4>📅 Дата</h4>
-                <p>Субота, 25 травня 2024 року</p>
+            <div className={styles.sectionContent}>
+              <div className={styles.weddingDetails}>
+                <div className={styles.detailItem}>
+                  <h4>13:00</h4>
+                  <p>Збір гостей</p>
+                </div>
+                <div className={styles.detailItem}>
+                  <h4>14:00</h4>
+                  <p>Церемонія</p>
+                </div>
+                <div className={styles.detailItem}>
+                  <h4>15:00</h4>
+                  <p>Банкет</p>
+                </div>
+                {/* <div className={styles.detailItem}>
+                  <h4>🎉 Місце банкету</h4>
+                  <p>Ресторан "Українська садиба"<br />вул. Хрещатик, 15, Київ</p>
+                </div> */}
               </div>
-              <div className={styles.detailItem}>
-                <h4>⏰ Час</h4>
-                <p>Церемонія: 14:00<br />Банкет: 16:00</p>
+              
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section 
+        id="details" 
+        data-animate
+        className={`${styles.section} ${visibleSections.has('details') ? styles.visible : ''}`}
+      >
+        <Card className={styles.infoCard}>
+          <CardHeader>
+            <CardTitle className={styles.sectionTitle}>Дрескод</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className={styles.sectionContent}>
+              <div className={styles.weddingDetails}>
+                <div className={styles.detailItem}>                  
+                  <p>Нам буде приємно, якщо Ви підтримаєте етнічну атмосферу нашого свята та одягнете вишите вбрання. <br/> Збережемо наші традиції разом! </p>
+                </div>
+                <div className={styles.detailItem}>
+                  <h4>Побажання</h4>
+                  <p>Просимо Вас не дарувати нам квіти, адже ми не встигнемо насолодитися їхньою красою, але ви можете доповнити пляшечкою міцного алкоголю, нашу домашньої колекції!</p>
+                  <p>Ми дуже цінуємо вашу турботу та увагу, щоб наші руки були вільні для обіймів, <br/>будемо раді легким подарункам у конвертах</p>
+                </div>
+                
               </div>
-              <div className={styles.detailItem}>
-                <h4>🏛️ Місце церемонії</h4>
-                <p>Свято-Михайлівський собор<br />вул. Михайлівська, 7, Київ</p>
-              </div>
-              <div className={styles.detailItem}>
-                <h4>🎉 Місце банкету</h4>
-                <p>Ресторан "Українська садиба"<br />вул. Хрещатик, 15, Київ</p>
-              </div>
+              
             </div>
           </CardContent>
         </Card>
@@ -140,106 +197,110 @@ const Wedding: React.FC = () => {
       >
         <Card className={styles.formCard}>
           <CardHeader>
-            <CardTitle className={styles.sectionTitle}>Підтвердження присутності</CardTitle>
+            <CardTitle className={styles.sectionTitle}>Будь ласка, підтвердіть вашу присутність до 15.10.2025р</CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className={styles.guestForm}>
-              <div className={styles.formGroup}>
-                <Label htmlFor="name">Повне ім'я *</Label>
-                <Input
-                  id="name"
-                  value={guestForm.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className={styles.formRow}>
+            <div className={styles.sectionContent}>
+              <form onSubmit={handleSubmit} className={styles.guestForm}>
                 <div className={styles.formGroup}>
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="name">Прізвище та ім'я *</Label>
                   <Input
-                    id="email"
-                    type="email"
-                    value={guestForm.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    id="name"
+                    value={guestForm.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    required
                   />
-                </div>
+                </div>            
+
                 <div className={styles.formGroup}>
-                  <Label htmlFor="phone">Телефон</Label>
-                  <Input
-                    id="phone"
-                    value={guestForm.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                  />
+                  <Label>Чи можете ви бути присутні? *</Label>
+                  <RadioGroup
+                    value={guestForm.attendance}
+                    onValueChange={(value) => handleInputChange('attendance', value)}
+                  >
+                    <div className={styles.radioItem}>
+                      <RadioGroupItem value="yes" id="yes" />
+                      <Label htmlFor="yes">я буду присутній</Label>
+                    </div>
+                    <div className={styles.radioItem}>
+                      <RadioGroupItem value="no" id="no" />
+                      <Label htmlFor="no">я не зможемо бути присутнім</Label>
+                    </div>
+                  </RadioGroup>
                 </div>
-              </div>
 
-              <div className={styles.formGroup}>
-                <Label>Чи будете присутні? *</Label>
-                <RadioGroup
-                  value={guestForm.attendance}
-                  onValueChange={(value) => handleInputChange('attendance', value)}
-                >
-                  <div className={styles.radioItem}>
-                    <RadioGroupItem value="yes" id="yes" />
-                    <Label htmlFor="yes">Так, обов'язково будемо!</Label>
-                  </div>
-                  <div className={styles.radioItem}>
-                    <RadioGroupItem value="no" id="no" />
-                    <Label htmlFor="no">На жаль, не зможемо прийти</Label>
-                  </div>
-                </RadioGroup>
-              </div>
+                {guestForm.attendance === 'yes' && (
+                  <>
+                    <div className={styles.formGroup}>
+                      <Label htmlFor="guests">Кількість гостей</Label>
+                      <Input
+                        id="guests"
+                        type="number"
+                        min="1"
+                        max="5"
+                        value={guestForm.guests}
+                        onChange={(e) => handleInputChange('guests', e.target.value)}
+                      />
+                    </div>
 
-              {guestForm.attendance === 'yes' && (
-                <>
-                  <div className={styles.formGroup}>
-                    <Label htmlFor="guests">Кількість гостей</Label>
-                    <Input
-                      id="guests"
-                      type="number"
-                      min="1"
-                      max="5"
-                      value={guestForm.guests}
-                      onChange={(e) => handleInputChange('guests', e.target.value)}
-                    />
-                  </div>
+                   <div className={styles.formGroup}>
+                  <Label>З чиєї ви сторони?</Label>
+                  <RadioGroup
+                    value={guestForm.attendance}
+                    onValueChange={(value) => handleInputChange('attendance', value)}
+                  >
+                    <div className={styles.radioItem}>
+                      <RadioGroupItem value="yes" id="yes" />
+                      <Label htmlFor="yes">сторона нареченого</Label>
+                    </div>
+                    <div className={styles.radioItem}>
+                      <RadioGroupItem value="no" id="no" />
+                      <Label htmlFor="no">сторона нареченої</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+                  </>
+                )}
 
-                  <div className={styles.formGroup}>
-                    <Label htmlFor="dietary">Особливості харчування</Label>
-                    <Input
-                      id="dietary"
-                      placeholder="Вегетаріанство, алергії тощо"
-                      value={guestForm.dietary}
-                      onChange={(e) => handleInputChange('dietary', e.target.value)}
-                    />
-                  </div>
-                </>
-              )}
+                {/* <div className={styles.formGroup}>
+                  <p >* Прохання не пересилати посилання друзям та знайомим, це лише індивідуально для Вас.</p>
+                  <Textarea
+                    id="message"
+                    placeholder="Ваші теплі побажання..."
+                    value={guestForm.message}
+                    onChange={(e) => handleInputChange('message', e.target.value)}
+                  />
+                </div> */}
 
-              <div className={styles.formGroup}>
-                <Label htmlFor="message">Побажання молодятам</Label>
-                <Textarea
-                  id="message"
-                  placeholder="Ваші теплі побажання..."
-                  value={guestForm.message}
-                  onChange={(e) => handleInputChange('message', e.target.value)}
-                />
-              </div>
-
-              <Button type="submit" className={styles.submitButton}>
-                Підтвердити присутність
-              </Button>
-            </form>
+                <Button type="submit" className={styles.submitButton}>
+                  Підтвердити присутність
+                </Button>
+              </form>
+            </div>
+            <div className={styles.formGroup}>
+                  <p >* Прохання не пересилати посилання друзям та знайомим, це лише індивідуально для Вас.</p>
+                  {/* <Textarea
+                    id="message"
+                    placeholder="Ваші теплі побажання..."
+                    value={guestForm.message}
+                    onChange={(e) => handleInputChange('message', e.target.value)}
+                  /> */}
+                </div>
           </CardContent>
+        <div className={styles.detailItem}>
+          <p>З нетерпінням чекаємо Вас! <br/> Ваші Оля та Коля 💕</p>
+          <div className={styles.ornament}>🌻 💙 💛 🌻</div>
+        </div>
         </Card>
       </section>
 
       {/* Footer */}
-      <footer className={styles.footer}>
-        <p>З любов'ю, Олександр і Марія 💕</p>
-        <div className={styles.ornament}>🌻 💙 💛 🌻</div>
-      </footer>
+      {/* <footer className={styles.footer}>
+  <div className={styles.sectionContent}>
+          <p>З нетерпінням чекаємо Вас! <br/> Ваші Оля та Коля 💕</p>
+          <div className={styles.ornament}>🌻 💙 💛 🌻</div>
+        </div>
+      </footer> */}
     </div>
   );
 };
