@@ -8,7 +8,6 @@
   /* background: linear-gradient(135deg, #87ceeb 0%, #f0f8ff 50%, #ffd700 100%); */
   position: relative;
   overflow-x: hidden;
-  overflow-y: hidden;
   
   z-index: 5;
 }
@@ -68,8 +67,7 @@
   box-sizing: border-box;
   /* opacity: 0; */
   transform: translateY(20px);
-  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
-  /* make sure hero sits above decorative background */
+  transition: opacity 1200ms cubic-bezier(.2,.9,.2,1), transform 1200ms cubic-bezier(.2,.9,.2,1);
   position: relative;
   z-index: 1;
 }
@@ -140,7 +138,7 @@
   margin: 0 auto;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+  transition: opacity 1200ms cubic-bezier(.2,.9,.2,1), transform 1200ms cubic-bezier(.2,.9,.2,1);
   justify-items: center;
   overflow: hidden;
   overlay: hidden;
@@ -155,10 +153,10 @@
 .sectionContent {
   /* opacity: 0; */
   transform: translateY(12px) scale(0.995);
-  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+  transition: opacity 1200ms cubic-bezier(.2,.9,.2,1), transform 1200ms cubic-bezier(.2,.9,.2,1);
   will-change: opacity, transform;
   /* prepare children for stagger */
-  --reveal-stagger: 80ms;
+  --reveal-stagger: 200ms;
 }
 
 /* When the section becomes visible, reveal the container and its children with a small stagger */
@@ -171,7 +169,7 @@
 .section.visible .sectionContent > * {
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 420ms cubic-bezier(.2,.9,.2,1), transform 420ms cubic-bezier(.2,.9,.2,1);
+  transition: opacity 1200ms cubic-bezier(.2,.9,.2,1), transform 1200ms cubic-bezier(.2,.9,.2,1);
 }
 .section.visible .sectionContent > *:nth-child(1) { transition-delay: calc(var(--reveal-stagger) * 0); opacity: 1; transform: translateY(0); }
 .section.visible .sectionContent > *:nth-child(2) { transition-delay: calc(var(--reveal-stagger) * 1); opacity: 1; transform: translateY(0); }
@@ -189,10 +187,32 @@
   /* border: 2px solid rgba(212, 175, 55, 0.28); */
   /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); */
   /* backdrop-filter: blur(8px); */
+
   border-radius: 12px;
   width: 100%;
   max-width: 1000px;
   transition: transform 0.45s cubic-bezier(.2,.9,.2,1), box-shadow 0.35s ease;
+}
+
+.place{
+/* content: ''; */
+  /* position: absolute; */
+  /* width: 100%; */
+  /* height: 100%; */
+  border-radius: 12px;
+  background-image: url("/place.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* subtle animated gradient border */
+  /* background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e); */
+  /* background-size: 600% 600%; */
+  animation: gradientBorder 8s ease infinite;
+}
+
+.mapSection{
+  opacity: 0.7 !important;
+  margin-top: 50%;
 }
 
 .sectionTitle {
@@ -202,7 +222,11 @@
   text-align: center;
   /* margin-bottom: 18px; */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+  margin-top: 1rem;
 }
+
+
 
 .coupleInfo {
   display: grid;
@@ -290,6 +314,7 @@
   font-size: 1.3rem;
   color: #1e0441;
   margin: 0 0 15px 0;
+  padding-top: 0;
 }
 
 .detailItem p {
@@ -389,8 +414,52 @@
   }
 }
 
+.loveStory span,
+.detailItem p span,
+.sectionTitle span,
+.weddingDate span,
+.detailItem h4 span,
+/* label span, */
+.submitButton span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 800ms cubic-bezier(.2,.9,.2,1), transform 800ms cubic-bezier(.2,.9,.2,1);
+}
+
+.section.visible .loveStory span,
+.section.visible .detailItem p span,
+.section.visible .sectionTitle span,
+.section.visible .weddingDate span,
+.section.visible .detailItem h4 span,
+/* .section.visible label span, */
+.section.visible .submitButton span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+  .section,
+  .sectionContent,
+  .section.visible .sectionContent > * {
+    transition-duration: 800ms;
+  }
+
+  .sectionContent {
+    --reveal-stagger: 100ms;
+  }
+
+  .loveStory span,
+  .detailItem p span,
+  .sectionTitle span,
+  .weddingDate span,
+  .detailItem h4 span,
+  /* label span, */
+  .submitButton span {
+    transition-duration: 500ms;
+  }
+
   .coupleTitle {
     font-size: 5rem;
   }
@@ -418,6 +487,15 @@
 
   .weddingDetails {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .weddingDetails > div:nth-child(odd) {
+    transform: translateX(-15px);
+  }
+
+  .weddingDetails > div:nth-child(even) {
+    transform: translateX(15px);
   }
 
   .section {
