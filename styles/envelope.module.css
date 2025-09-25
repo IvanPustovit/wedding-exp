@@ -4,13 +4,116 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url('/ornament.jpg');
+  /* background-image: url('/ornament.jpg'); */
   background-repeat: space;
   /* background: linear-gradient(135deg, #0057b7 0%, #ffd700 50%, #0057b7 100%); */
   position: relative;
   overflow: hidden;
-  padding: 20px;
+  /* padding: 20px; */
 }
+
+.envelopeContainer::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/fonOrnament.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.7
+  
+  }
+
+  .envelopeContainer::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/fonOrnament.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.7;
+  transform:rotate(180deg);
+  
+  }
+
+  .envelopeContainerKolos{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/pngwing3.png');
+  /* background-size: 100% 100%; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  /* background-position: left bottom; */
+  /* opacity: 0.7; */
+  /* transform:rotate(-58deg); */
+  /* animation: cardSlideOut 2s ease-out ; */
+  transform: translateX(-100%);
+  animation-name: slideInUp;
+    animation-duration: 1.3s;
+    animation-timing-function: ease-out;
+    animation-delay: 0.3s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+
+/*   
+@keyframes slideInUp {
+    from { transform: rotate(-58deg); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+} */
+
+  
+  .envelopeContainerKolos::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -10%;
+  bottom: 0;
+  background-image: url('/pngwing3.png');
+  /* background-size: 100% 100%; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  /* background-position: left bottom; */
+  /* opacity: 0.7; */
+  /* transform:rotate(-58deg); */
+  /* animation: cardSlideOut 2s ease-out ; */
+  transform: translateX(-100%);
+    animation-name: slideInUp;
+    animation-duration: 1.3s;
+    animation-timing-function: ease-out;
+    animation-delay: 0.3s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards; /* Recommended for start/end states */
+}
+
+/* Add these @keyframes to your CSS file */
+@keyframes slideInUp {
+    /* from { transform:translateX(50px) rotate(-180deg); opacity: 0; }
+    to { transform: rotate(-58deg); opacity: 1; } */
+    0% { transform:  rotate(-18deg); opacity: 0; }
+  25% { transform:  rotate(-10deg);opacity: 0.2; }
+  50% { transform:  rotate(-20deg); opacity: 0.5;}
+  100% { transform: translateY(-5px) rotate(-58deg);opacity: 1; }
+}
+
+  
+  
 
 .ukrainianPattern {
   position: absolute;
@@ -18,12 +121,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.2) 3px, transparent 3px),
-    radial-gradient(circle at 75% 75%, rgba(220, 20, 60, 0.2) 3px, transparent 3px),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
-  background-size: 40px 40px, 60px 60px, 80px 80px;
-  animation: patternFloat 25s ease-in-out infinite;
+  
 }
 
 @keyframes patternFloat {
@@ -97,12 +195,12 @@
 .envelope {
   position: relative;
   width: 40rem;
-  height: 30rem;
+  height: 20rem;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: envelopeEntrance 2s ease-out 0.5s both, envelopeFloat 4s ease-in-out infinite 2.5s;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.3));
+  /* filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.3)); */
 }
 
 @keyframes envelopeEntrance {
@@ -118,7 +216,7 @@
 
 .envelope:hover {
   transform: scale(1.08) translateY(-5px);
-  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.4));
+  /* filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.4)); */
 }
 
 @keyframes envelopeFloat {
@@ -130,12 +228,13 @@
   width: 100%;
   height: 100%;
   /* background: linear-gradient(145deg, #fff8dc, #f5f5dc); */
-  background-image: url('/fon.jpg');
-  border: 3px solid #d4af37;
-  border-radius: 12px;
-  box-shadow: 
+  /* background-image: url('/fon.jpg'); */
+  background: #690101;
+  /* border: 3px solid #d4af37;
+  border-radius: 12px; */
+  /* box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.3),
-    inset 0 2px 10px rgba(255, 255, 255, 0.5);
+    inset 0 2px 10px rgba(255, 255, 255, 0.5); */
   position: relative;
   display: flex;
   align-items: center;
@@ -150,27 +249,28 @@
   left: 10px;
   right: 10px;
   bottom: 10px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  /* border: 1px solid rgba(212, 175, 55, 0.3); */
   border-radius: 8px;
   pointer-events: none;
 }
 .envelopeFlapBack {
   position: absolute;
-  top: 4px;
-  left: 1px;
-  right: -2px;
+  top: 3px;
+  /* left: -2px; */
+  right: -1px;
+  width: 100%;
   height: 20rem;
   width: 100%;
-  background: linear-gradient(145deg, #706431, #f0f0e6);
-  /* border: 2px solid #d4af37; */
-  /* border-bottom: none; */
+  background: #3f0202;
+  border: 2px groove #3f0202;  
   clip-path: polygon(0 0, 100% 0, 50% 75%);
   /* transition: all 1.8s cubic-bezier(0.4, 0, 0.2, 1); */
   z-index: 1;
-  box-shadow: 
+  /* box-shadow: 
     0 8px 20px rgba(202, 65, 65, 0.25),
-    inset 0 2px 8px rgba(20, 20, 20, 0.4);
+    inset 0 2px 8px rgba(20, 20, 20, 0.4); */
 }
+
 
 .envelopeFlap {
   position: absolute;
@@ -179,8 +279,8 @@
   right: -1px;
   width: 100%;
   height: 20rem;
-  background-image: url('/fon.jpg');
-  /* background: linear-gradient(145deg, #fff8dc, #f5f5dc); */
+  /* background-image: url('/fon.jpg'); */
+  background: #690101;
   /* border: 1px solid #d4af37; */
   /* border-bottom: none; */
   clip-path: polygon(0 0, 100% 0, 50% 75%);
@@ -188,7 +288,7 @@
   z-index: 2;
   box-shadow: 
     0 8px 20px rgba(202, 65, 65, 0.25),
-    inset 0 2px 8px rgba(248, 244, 244, 0.733);
+    inset 0 2px 8px rgba(14, 13, 13, 0.733);
     /* transform: rotateX(0deg); */
     transition: transform 0.5s ease-in-out;
   transform-origin: center bottom; /* Pivot at bottom center */
@@ -235,14 +335,15 @@
   transform: translateX(-50%);
   width: 38rem;
   height: 25rem;
-  background: linear-gradient(145deg, #fff8dc, #faf0e6);
-  border: 3px solid #d4af37;
-  border-radius: 15px;
-  box-shadow: 
+  /* background: linear-gradient(145deg, #f36974, #fa4848); */
+  /* border: 3px solid #d4af37; */
+  border-radius: 25px;
+  /* box-shadow: 
     0 20px 50px rgba(0, 0, 0, 0.4),
-    inset 0 2px 10px rgba(255, 255, 255, 0.6);
+    inset 0 2px 10px rgba(255, 255, 255, 0.6); */
   animation: cardSlideOut 2s ease-out forwards;
   z-index: 2;
+
   /* overflow: hidden; */
 }
 
@@ -269,15 +370,18 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  background-image: url('/hq720.jpg');
+  /* background-color: blue; */
+  background-image: url('/2.png'), radial-gradient(circle, rgba(112, 111, 111, 0.8), rgba(255, 255, 255, 0.6));
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  /* background-size: 39.2rem 26.5rem; */
+  background-size: 103% 103%;
+  /* background-position:26.5rem; */
   background-position: center;
   border-radius: 1rem;
-  /* background: 
-    radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 20%, transparent 20%),
-    radial-gradient(circle at 80% 80%, rgba(0, 87, 183, 0.1) 20%, transparent 20%);
-  background-size: 30px 30px; */
+  /* box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    inset 0 2px 10px rgba(255, 255, 255, 0.6); */
 }
 
 .cardContent::before {
@@ -287,9 +391,15 @@
   left: 8px;
   right: 8px;
   bottom: 8px;
+  background-image: url('/hq720.jpg');
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background: #690101; */
   /* border: 2px solid rgba(212, 175, 55, 0.4); */
   border-radius: 10px;
   pointer-events: none;
+  opacity: 0.3;z-index: 1;
 }
 
 .coupleNames {
@@ -303,6 +413,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  z-index: 5;
 }
 
 .inviteText {
@@ -441,7 +552,7 @@
   
   .envelope {
     width: 20rem;
-    height: 15rem;
+    height: 10rem;
   }
   
   .invitationCard {

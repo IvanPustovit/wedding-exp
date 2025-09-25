@@ -29,6 +29,8 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
 
   return (
     <div className={styles.envelopeContainer}>
+    {isOpening && <div className={styles.envelopeContainerKolos}></div>}
+
       <div className={styles.ukrainianPattern}></div>
       
       {/* Show couple names prominently at the top */}
@@ -45,27 +47,19 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
         <div className={styles.envelopeFlap}></div>
         <div className={styles.envelopeFlapBack}></div>
         <div className={styles.envelopeBody}>
-          <div className={styles.waxSeal}>
-            <span className={styles.sealText}>💕</span>
-          </div>
+        {/* <div className={styles.envelopeFlap}></div> */}
+          {/* <div className={styles.waxSeal}> */}
+            {/* <span className={styles.sealText}>💕</span> */}
+          {/* </div> */}
         </div>
         {isOpening && (
           <div className={styles.invitationCard}>
             <div className={styles.cardContent}>
               <h3 className={styles.coupleNames}>Запрошення від</h3>
               <h3 className={styles.coupleNames}>Миколи & Ольги</h3>
-              {/* <p className={styles.inviteText}>запрошують вас на своє весілля</p> */}
+             
               <div className={styles.ornament}>🌻 💙 💛 🌻</div>
-              {/* {showRedirectMessage && (
-                <p style={{
-                  marginTop: '15px',
-                  fontSize: '14px',
-                  color: '#666',
-                  fontStyle: 'italic'
-                }}>
-                  Переходимо до деталей весілля...
-                </p>
-              )} */}
+             
             </div>
           </div>
         )}

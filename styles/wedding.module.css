@@ -5,7 +5,7 @@
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   overscroll-behavior-y: auto;
-  background: linear-gradient(135deg, #87ceeb 0%, #f0f8ff 50%, #ffd700 100%);
+  /* background: linear-gradient(135deg, #87ceeb 0%, #f0f8ff 50%, #ffd700 100%); */
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
