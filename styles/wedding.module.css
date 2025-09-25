@@ -215,6 +215,34 @@
   margin-top: 50%;
 }
 
+.dresscode{
+  
+  border-radius: 12px;
+  background-image: url("/drescode.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  animation: gradientBorder 8s ease infinite;
+}
+
+.dresscodeCard{
+ display: grid;
+  grid-template-columns: 1fr ;
+  gap: 50%;
+  align-items:stretch;
+  /* margin-bottom: 30px; */
+  justify-content: center;
+  align-items:stretch ;
+  width: 100%;
+  align-content: space-between;
+  height:  100vh;
+}
+
+.desire{
+  min-height: 100% !important;
+}
+
 .sectionTitle {
   font-family: 'Georgia', serif;
   font-size: 1.9rem; /* mobile-first */

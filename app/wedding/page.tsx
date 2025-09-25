@@ -175,9 +175,9 @@ const Wedding: React.FC = () => {
       <section 
         id="dresscode" 
         data-animate
-        className={`${styles.section} ${visibleSections.has('dresscode') ? styles.visible : ''}`}
+        className={`${styles.section} ${styles.dresscode} ${visibleSections.has('dresscode') ? styles.visible : ''}`}
       >
-        <Card className={styles.infoCard}>
+        <Card className={`${styles.infoCard} ${styles.dresscodeCard}`}>
           <CardHeader>
             <CardTitle className={styles.sectionTitle}>{renderAnimatedText("Дрескод")}</CardTitle>
           </CardHeader>
@@ -189,6 +189,16 @@ const Wedding: React.FC = () => {
                     {renderAnimatedText("Нам буде приємно, якщо Ви підтримаєте етнічну атмосферу нашого свята та одягнете вишите вбрання. <br/> Збережемо наші традиції разом! ")}
                   </p>
                 </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section  id="desire" 
+        data-animate
+        className={`${styles.section} ${styles.desire} ${visibleSections.has('desire') ? styles.visible : ''}`}>
+                <CardContent>
                 <div className={styles.detailItem}>
                   <h4>{renderAnimatedText("Побажання")}</h4>
                   <p>
@@ -197,12 +207,7 @@ const Wedding: React.FC = () => {
                   <p>
                     {renderAnimatedText("Ми дуже цінуємо вашу турботу та увагу, щоб наші руки були вільні для обіймів, <br/>будемо раді легким подарункам у конвертах")}
                   </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
+                </div></CardContent></section>
 
       {/* Guest Form */}
       <section 
