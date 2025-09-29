@@ -10,6 +10,7 @@ import styles from '../../styles/wedding.module.css';
 import Countdown from '@/components/Countdown';
 import LocationMap from '@/components/LocationMap';
 import Calendar from '@/components/Calendar';
+import Image from 'next/image';
 
 const Wedding: React.FC = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -17,12 +18,14 @@ const Wedding: React.FC = () => {
     name: '',
     email: '',
     phone: '',
-    attendance: '',
-    guests: '1',
+    attendance: '',    
+    guests: '',
     dietary: '',
-    message: ''
+    message: '',
+    whoIs: ''
   });
 
+console.log(guestForm);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -90,17 +93,20 @@ const Wedding: React.FC = () => {
         data-animate
         className={`${styles.section} ${visibleSections.has('couple-info') ? styles.visible : ''}`}
       >
-        <Card className={styles.infoCard}>
+        <Card className={`${styles.infoCard} ` }>
+        <div className={styles.coupleInfoCard}>
           <CardHeader>
             <CardTitle className={styles.sectionTitle}>{renderAnimatedText("Дорогі наші!")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className={styles.sectionContent}>            
+             <img src="/loveStory.jpeg" alt="Love Story" className={styles.loveStoryImg} />
               <p className={styles.loveStory}>
-                {renderAnimatedText("У житті трапляються моменти, які хочеться розділити з тими хто по справжньому важливий. Для нас таким моментом стане день коли ми станемо чоловіком та дружиною, запрошуємо Вас стати частиною початку нашої сімейної історії.")}
+                {renderAnimatedText("У житті трапляються моменти, які хочеться розділити з тими, хто по-справжньому важливий. Для нас таким моментом стане день, коли ми станемо чоловіком і дружиною. Запрошуємо вас стати частиною початку нашої сімейної історії!")}
               </p>
             </div>
           </CardContent>
+          </div>
           <div style={{ marginTop: 12, display: 'flex', justifyContent: 'center' }}>
               <Calendar year={2025} month={11} highlightedDay={1} isVisible={visibleSections.has('couple-info')} />
             </div>
@@ -119,18 +125,19 @@ const Wedding: React.FC = () => {
         <Card className={styles.infoCard}>
           <CardHeader>
             <div className={styles.sectionContent}>
-              <CardTitle className={styles.sectionTitle}>{renderAnimatedText("🏛️ Місце проведення")}</CardTitle>
-              <div className={styles.detailItem}>
+              <CardTitle className={`${styles.sectionTitle} ${styles.placeTitle}`}>{renderAnimatedText("Місце проведення")}</CardTitle>
+              <img src="/place1.jpeg" alt="Місце святкування" className={styles.locationImg} />
+              <div className={`${styles.detailItem} ${styles.locationDetails}`}>
                     <h4>{renderAnimatedText("Готельно-ресторанний комплекс \"VinoGrad\"")}</h4>
-                    <p>{renderAnimatedText("Місто Гайсин<br/>проспект Житній, 1")}</p>
+                    <p>{renderAnimatedText("Місто Гайсин, проспект Житній, 1")}</p>
                   </div>
-            </div>
-          </CardHeader>
-          <CardContent>
+          
             <div className={`${styles.sectionContent} ${styles.mapSection}`}>            
               <LocationMap address={`48.80427465487786, 29.41383327459868`} label={`Місце святкування: м.Гайсин`} />
             </div>
-          </CardContent>        
+                
+            </div>
+          </CardHeader>
         </Card>
       </section>
 
@@ -146,27 +153,29 @@ const Wedding: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className={`${styles.sectionContent} ${styles.weddingDetails}`}>
-              <div>
-                <img src="/zbir.jpg" alt="Збір гостей" className={styles.weddingDetailsImg} />
-                <div className={styles.detailItem}>
+            <img src="/program.jpeg" alt="Програма дня" className={styles.programDetailItem} />
+                              
+                <div className={styles.programDetailItemZbir}>
                   <h4>{renderAnimatedText("13:00")}</h4>
                   <p>{renderAnimatedText("Збір гостей")}</p>
                 </div>
-              </div>
-              <div>
-                <img src="/zbir.jpg" alt="Збір гостей" className={styles.weddingDetailsImg} />
-                <div className={styles.detailItem}>
+               
+                <div className={styles.programDetailItemProcesia}>
                   <h4>{renderAnimatedText("14:00")}</h4>
                   <p>{renderAnimatedText("Церемонія")}</p>
                 </div>
-              </div>
-              <div>
-                <img src="/zbir.jpg" alt="Збір гостей" className={styles.weddingDetailsImg} />
-                <div className={styles.detailItem}>
+              
+             
+                <div className={styles.programDetailItemBanket}>
                   <h4>{renderAnimatedText("15:00")}</h4>
                   <p>{renderAnimatedText("Банкет")}</p>
                 </div>
-              </div>
+
+                <div className={styles.programDetailItemEnd}>
+                  <h4>{renderAnimatedText("22:00")}</h4>
+                  <p>{renderAnimatedText("Завершення свята")}</p>
+                </div>
+              
             </div>
           </CardContent>
         </Card>
@@ -177,19 +186,18 @@ const Wedding: React.FC = () => {
         data-animate
         className={`${styles.section} ${styles.dresscode} ${visibleSections.has('dresscode') ? styles.visible : ''}`}
       >
-        <Card className={`${styles.infoCard} ${styles.dresscodeCard}`}>
+        <Card className={`${styles.infoCard} `}>
           <CardHeader>
             <CardTitle className={styles.sectionTitle}>{renderAnimatedText("Дрескод")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className={styles.sectionContent}>
-              <div className={styles.weddingDetails}>
-                <div className={styles.detailItem}>                  
-                  <p>
-                    {renderAnimatedText("Нам буде приємно, якщо Ви підтримаєте етнічну атмосферу нашого свята та одягнете вишите вбрання. <br/> Збережемо наші традиції разом! ")}
+                 <img src="/drescode.jpg" alt="Dresscode" className={styles.dresscodeImg} />              
+                  <p className={styles.dresscodeText}>
+                    {renderAnimatedText("Нам буде приємно, якщо ви підтримаєте етнічну атмосферу нашого свята та одягнете вишите вбрання. Збережімо наші традиції разом! ")}
                   </p>
-                </div>
-              </div>
+              
+             
             </div>
           </CardContent>
         </Card>
@@ -199,13 +207,13 @@ const Wedding: React.FC = () => {
         data-animate
         className={`${styles.section} ${styles.desire} ${visibleSections.has('desire') ? styles.visible : ''}`}>
                 <CardContent>
-                <div className={styles.detailItem}>
+                <div className={`${styles.detailItem} ${styles.desireDetails}` }>
                   <h4>{renderAnimatedText("Побажання")}</h4>
                   <p>
-                    {renderAnimatedText("Просимо Вас не дарувати нам квіти, адже ми не встигнемо насолодитися їхньою красою, але ви можете доповнити пляшечкою міцного алкоголю, нашу домашньої колекції!")}
+                    {renderAnimatedText("Просимо не дарувати нам квіти, адже ми не встигнемо насолодитися їхньою красою. Але ви можете поповнити нашу домашню колекцію пляшечкою міцного алкоголю. ")}
                   </p>
                   <p>
-                    {renderAnimatedText("Ми дуже цінуємо вашу турботу та увагу, щоб наші руки були вільні для обіймів, <br/>будемо раді легким подарункам у конвертах")}
+                    {renderAnimatedText("Ми дуже цінуємо вашу турботу й увагу. Щоб наші руки були вільні для обіймів, будемо раді легким подарункам у конвертах :)")}
                   </p>
                 </div></CardContent></section>
 
@@ -220,7 +228,7 @@ const Wedding: React.FC = () => {
             <CardTitle className={styles.sectionTitle}>{renderAnimatedText("Будь ласка, підтвердіть вашу присутність до 15.10.2025р")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className={styles.sectionContent}>
+            <div className={`${styles.sectionContent} ${styles.guestFormSection}`}>
               <form onSubmit={handleSubmit} className={styles.guestForm}>
                 <div className={styles.formGroup}>
                   <Label htmlFor="name">{renderAnimatedText("Прізвище та ім'я *")}</Label>
@@ -240,42 +248,68 @@ const Wedding: React.FC = () => {
                   >
                     <div className={styles.radioItem}>
                       <RadioGroupItem value="yes" id="yes" />
-                      <Label htmlFor="yes">{renderAnimatedText("я буду присутній")}</Label>
+                      <Label htmlFor="yes">{renderAnimatedText("Так буду!")}</Label>
+                    </div>
+                    <div className={styles.radioItem}>
+                      <RadioGroupItem value="yes+" id="yes+" />
+                      <Label htmlFor="yes+">{renderAnimatedText("Так буду+1")}</Label>
                     </div>
                     <div className={styles.radioItem}>
                       <RadioGroupItem value="no" id="no" />
-                      <Label htmlFor="no">{renderAnimatedText("я не зможемо бути присутнім")}</Label>
+                      <Label htmlFor="no">{renderAnimatedText("Не зможу")}</Label>
                     </div>
                   </RadioGroup>
+                
                 </div>
 
-                {guestForm.attendance === 'yes' && (
-                  <>
+                {guestForm.attendance === 'yes+' && (
+                  
                     <div className={styles.formGroup}>
-                      <Label htmlFor="guests">{renderAnimatedText("Кількість гостей")}</Label>
+                      <Label htmlFor="guests">{renderAnimatedText("З ким ви будете? (ім’я супутника/дітей)")}</Label>
                       <Input
-                        id="guests"
-                        type="number"
-                        min="1"
-                        max="5"
+                        id="guests"                        
                         value={guestForm.guests}
                         onChange={(e) => handleInputChange('guests', e.target.value)}
                       />
-                    </div>
+                    </div>)
+                    }
 
-                   <div className={styles.formGroup}>
+                  { guestForm.attendance === 'yes' && (
+                  <>
+               <div className={styles.formGroup}>
                   <Label>{renderAnimatedText("З чиєї ви сторони?")}</Label>
                   <RadioGroup
-                    value={guestForm.attendance}
-                    onValueChange={(value) => handleInputChange('attendance', value)}
+                    value={guestForm.whoIs}
+                    onValueChange={(value) => handleInputChange('whoIs', value)}
                   >
                     <div className={styles.radioItem}>
-                      <RadioGroupItem value="yes" id="yes" />
-                      <Label htmlFor="yes">{renderAnimatedText("сторона нареченого")}</Label>
+                      <RadioGroupItem value="man" id="man" />
+                      <Label htmlFor="man">{renderAnimatedText("сторона нареченого")}</Label>
                     </div>
                     <div className={styles.radioItem}>
-                      <RadioGroupItem value="no" id="no" />
-                      <Label htmlFor="no">{renderAnimatedText("сторона нареченої")}</Label>
+                      <RadioGroupItem value="female" id="female" />
+                      <Label htmlFor="female">{renderAnimatedText("сторона нареченої")}</Label>
+                    </div>
+                  </RadioGroup>
+                </div>
+                  </>
+                )}
+
+                { guestForm.attendance === 'yes+' && (
+                  <>
+               <div className={styles.formGroup}>
+                  <Label>{renderAnimatedText("З чиєї ви сторони?")}</Label>
+                  <RadioGroup
+                    value={guestForm.whoIs}
+                    onValueChange={(value) => handleInputChange('whoIs', value)}
+                  >
+                    <div className={styles.radioItem}>
+                      <RadioGroupItem value="man" id="man" />
+                      <Label htmlFor="man">{renderAnimatedText("сторона нареченого")}</Label>
+                    </div>
+                    <div className={styles.radioItem}>
+                      <RadioGroupItem value="female" id="female" />
+                      <Label htmlFor="female">{renderAnimatedText("сторона нареченої")}</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -291,7 +325,7 @@ const Wedding: React.FC = () => {
                   <p >{renderAnimatedText("* Прохання не пересилати посилання друзям та знайомим, це лише індивідуально для Вас.")}</p>
                 </div>
           </CardContent>
-        <div className={styles.detailItem}>
+        <div className={`{styles.detailItem} ${styles.finalText}` }>
           <p>{renderAnimatedText("З нетерпінням чекаємо Вас! <br/> Ваші Оля та Коля 💕")}</p>
           <div className={styles.ornament}>🌻 💙 💛 🌻</div>
         </div>

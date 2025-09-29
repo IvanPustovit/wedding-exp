@@ -18,7 +18,8 @@
   height: 100%;
   width: 100%;
   
-  background-image: url('/placefon.jpg');
+  background-image: url('/fonmain1.jpg');
+  /* background-image: url('/placefon.jpg'); */
   
   background-size: cover;
   /* background-blend-mode: normal; */
@@ -105,7 +106,7 @@
 }
 
 .weddingDate {
-  font-family: 'Georgia', serif;
+  font-family: 'Great_Vibes', cursive;
   font-size: 1.8rem;
   font-weight: 800;
   color: #2f04a7;
@@ -133,8 +134,9 @@
 }
 
 .section {
-  padding: 60px 20px;
-  min-height: 100vh;
+  padding: 0px 20px;
+  padding-bottom: 2rem;
+  /* min-height: 100vh; */
   margin: 0 auto;
   opacity: 0;
   transform: translateY(20px);
@@ -151,6 +153,8 @@
 
 /* Smooth content entrance inside sections when they become visible */
 .sectionContent {
+  text-align: center;
+  justify-items: anchor-center;
   /* opacity: 0; */
   transform: translateY(12px) scale(0.995);
   transition: opacity 1200ms cubic-bezier(.2,.9,.2,1), transform 1200ms cubic-bezier(.2,.9,.2,1);
@@ -189,14 +193,18 @@
   /* backdrop-filter: blur(8px); */
 
   border-radius: 12px;
-  width: 100%;
+  /* width: 100%; */
   max-width: 1000px;
   transition: transform 0.45s cubic-bezier(.2,.9,.2,1), box-shadow 0.35s ease;
 }
 
+.infoCard{
+
+}
+
 .place{
 
-  background-image: url("/place.jpg");
+  /* background-image: url("/place.jpg"); */
   background-size: contain;
   /* background-size: 100% 100%; */
   background-repeat: no-repeat;
@@ -204,42 +212,154 @@
   animation: gradientBorder 8s ease infinite;
 }
 
-.mapSection{
-  opacity: 0.7 !important;
-  margin-top: 50%;
+.locationImg{
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  /* border-radius: 12px; */
+  /* box-shadow: 0 10px 30px rgba(0,0,0,0.12); */
+  /* margin: 20px auto 0 auto; */
+  display: block;
+  box-shadow: inset 0 0 25px rgba(101, 114, 126, 40), inset 0 0 25px rgba(140, 150, 170, 50), inset 0 0 25px rgb(83, 94, 104), inset 0 0 25px rgb(86, 96, 106);
+  /* opacity: 0.9; */
 }
+
+.mapSection{
+  position: absolute;
+  /* opacity: 0.7 !important; */
+  /* margin-top: 50%; */
+  top: 60%;
+  left: 0;
+  right: 0;
+  width: 95%;
+  /* width: 60%; */
+  margin: 0 auto;
+}
+
+.programDetailItem{
+  position: relative;
+  width: 100%;
+   box-shadow: inset 0 0 25px rgba(101, 114, 126, 40), inset 0 0 25px rgba(140, 150, 170, 50), inset 0 0 25px rgb(83, 94, 104), inset 0 0 25px rgb(86, 96, 106);
+   margin-top: 1rem;
+}
+
+.programDetailItemZbir{
+  position: absolute;
+  top: 5%;
+  left: 40%;
+}
+.programDetailItemZbir h4, .programDetailItemZbir p{
+ margin: 0;
+ font-size: 5rem;
+}
+
+.programDetailItemProcesia{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+}
+.programDetailItemProcesia h4, .programDetailItemProcesia p{
+  margin: 0;
+  font-size: 5rem;
+width: 50%;
+line-height: 1;
+}
+
+.programDetailItemBanket{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+}
+.programDetailItemBanket h4, .programDetailItemBanket p{
+  margin: 0;
+  font-size: 5rem;
+
+}
+
+.programDetailItemEnd{
+  position: absolute;
+  top: 80%;
+  left: 5%;
+}
+.programDetailItemEnd h4, .programDetailItemEnd p{
+  margin: 0;
+  font-size: 5rem;
+
+}
+
+
+
+
 
 .dresscode{
   
-  /* border-radius: 12px; */
+/*   
   background-image: url("/drescode.jpg");
-  /* background-size: 100% 100%; */
+
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: contain; */
   
   animation: gradientBorder 8s ease infinite;
 }
 
-.dresscodeCard{
- display: grid;
-  grid-template-columns: 1fr ;
-  gap: 50%;
-  align-items:stretch;
-  /* margin-bottom: 30px; */
-  justify-content: center;
-  align-items:stretch ;
+
+
+.dresscodeImg{  
+  position: relative;  
   width: 100%;
-  align-content: space-between;
-  height:  100vh;
+  box-shadow: inset 0 0 25px rgba(101, 114, 126, 40), inset 0 0 25px rgba(140, 150, 170, 50), inset 0 0 25px rgb(83, 94, 104), inset 0 0 25px rgb(86, 96, 106);
+ margin-top: 1rem;
 }
 
 .desire{
   min-height: 100% !important;
 }
 
+.dresscodeText{
+  width: 50%;
+  position: absolute;
+  top: 80%;
+  left: 1%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #2f4f4f;  
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.desireDetails h4{
+  font-size: 2rem !important;
+} 
+
+.desireDetails p{
+  font-size: 1.8rem !important;
+}
+
+.guestFormSection{
+  margin-top: 1rem;
+  text-align: left;
+  font-size: 1.3rem;
+}
+
+.guestFormSection label{
+ 
+  font-size: 1.3rem;
+}
+
+.finalText{
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2f4f4f;  
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 .sectionTitle {
-  font-family: 'Georgia', serif;
+  font-family: 'Great_Vibes', cursive;
   font-size: 1.9rem; /* mobile-first */
   color: #8b0000;
   text-align: center;
@@ -249,6 +369,9 @@
   margin-top: 1rem;
 }
 
+.placeTitle{
+  margin-bottom: 0.5rem;
+}
 
 
 .coupleInfo {
@@ -297,29 +420,62 @@
   }
 }
 
+
+.coupleInfoCard{
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+ width: 100%;
+ /* margin-top: 2rem; */
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* padding: 20px;
+  box-sizing: border-box; */
+}
+
+.loveStoryImg{
+  width: 100%;
+  position: relative;
+  max-width: 100vh;
+  width: 100vw;
+  /* border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  margin: 20px auto 0 auto;
+  display: block;
+  opacity: 0.9; */
+}
+
 .loveStory {
-  font-family: 'caveat', serif;
+  position: absolute;
+  top: 15%;
+  /* margin-top: 7rem ; */
+  left: 0;
+  right: 0;
+  width: 60%;
+  margin: 0 auto;
+  font-family: 'caveat', cursive;
   font-size: 2.5rem;
   font-weight: 600;
   color: #2f4f4f;
-  line-height: 1.8;
+  line-height: 1.5;
   text-align: center;
   font-style: italic;
-  margin-top: 0;
-  
-  /* padding: 20px; */
-  /* background: rgba(255, 248, 220, 0.3); */
-  /* border-radius: 10px; */
-  /* border-left: 4px solid #d4af37; */
+ 
 }
 
-.weddingDetails {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+.locationDetails{
+  position: absolute;
 }
 
 .detailItem {
+  /* position: absolute; */
+  top: 5%;
+  left: 0;
+  right: 0;
   text-align: center;
   padding: 25px;
   /* background: rgba(255, 248, 220, 0.5); */
@@ -333,17 +489,18 @@
 }
 
 .detailItem h4 {
-  font-family: 'Georgia', serif;
-  font-size: 1.3rem;
+  font-family: 'Great_Vibes', cursive;
+  font-size: 1.2rem;
   color: #1e0441;
-  margin: 0 0 15px 0;
+  margin: 0 0 0 0;
   padding-top: 0;
 }
 
 .detailItem p {
   color: #2f4f4f;
-  line-height: 1.6;
+  /* line-height: 1.6; */
   font-size: 1.2rem;
+  margin-top: 0;
 }
 
 .venueImage {
@@ -522,10 +679,60 @@
   }
 
   .section {
-    padding: 5px 10px;
+    padding: 0x 10px;
+    padding-bottom: 4rem;
   }
   .loveStory { 
+    position: fixed;
     font-size: 1.2rem;
     color: #2a16db;
+    /* width: 60%; */
+    margin-top: 2.2rem ;
+    left: 0;
+    right: 0
+    /* width: 100 */
     }
+    .loveStoryImg{
+      height: 60vh;
+      top: 2rem;
+}
+.programDetailItemZbir h4, .programDetailItemZbir p{
+ /* margin: 0; */
+ font-size: 2.5rem;
+
+}
+
+.programDetailItemProcesia{
+ 
+  top: 30%;}
+  
+.programDetailItemProcesia h4, .programDetailItemProcesia p{
+  font-size: 2.5rem;
+  width: 50%;
+}
+.programDetailItemBanket{
+  top: 55%;
+  /* left: 30%; */
+}
+.programDetailItemBanket h4, .programDetailItemBanket p{
+  font-size: 2.5rem;
+
+}
+.programDetailItemEnd{
+ 
+  left: 2%; 
+  }
+.programDetailItemEnd h4, .programDetailItemEnd p{
+  font-size: 2.5rem;
+
+}
+
+.dresscodeText{
+  top: 70%;
+  width: 65%;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  
+
+}
 }
