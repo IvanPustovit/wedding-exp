@@ -44,22 +44,43 @@
   }
 
   .envelopeContainerKolos{
-  content: '';
-  position: absolute;
-  top: 0;
+    /* width: 10%;
+    height: 10%; */
+  /* content: ''; */
+  /* position: absolute; */
+  /* top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background-image: url('/pngwing3.png');
-  /* background-size: 100% 100%; */
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 1;
-  /* background-position: left bottom; */
-  /* opacity: 0.7; */
-  /* transform:rotate(-58deg); */
-  /* animation: cardSlideOut 2s ease-out ; */
+  bottom: 0; */
+  /* background-image: url('/pngwing3.png');  */
+  /* background-size: contain;
+  background-repeat: no-repeat; */
+  /* z-index: 1; 
   transform: translateX(-100%);
+  animation-name: slideInUp;
+    animation-duration: 1.3s;
+    animation-timing-function: ease-out;
+    animation-delay: 0.3s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards; */
+  }
+
+/*   
+@keyframes slideInUp {
+    from { transform: rotate(-58deg); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+} */
+
+.kolosImage {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  right: 0;
+  width: 60%;
+  height:15rem;
+  z-index: 10;
+  transform: translateX(100%);
   animation-name: slideInUp;
     animation-duration: 1.3s;
     animation-timing-function: ease-out;
@@ -69,37 +90,49 @@
     animation-fill-mode: forwards;
   }
 
-/*   
-@keyframes slideInUp {
-    from { transform: rotate(-58deg); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-} */
-
-  
-  .envelopeContainerKolos::after{
-  content: '';
+  .kolosImage2 {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: -10%;
-  bottom: 0;
-  background-image: url('/pngwing3.png');
-  /* background-size: 100% 100%; */
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 1;
-  /* background-position: left bottom; */
-  /* opacity: 0.7; */
-  /* transform:rotate(-58deg); */
-  /* animation: cardSlideOut 2s ease-out ; */
+  top: -50%;
+  left: 50%;
+  right: 0;
+  width: 60%;
+  height:15rem;
+  z-index: 10;
   transform: translateX(-100%);
-    animation-name: slideInUp;
+  animation-name: slideInUpTwo;
     animation-duration: 1.3s;
     animation-timing-function: ease-out;
     animation-delay: 0.3s;
     animation-iteration-count: 1;
     animation-direction: normal;
-    animation-fill-mode: forwards; /* Recommended for start/end states */
+    animation-fill-mode: forwards;
+  }
+
+  
+  .envelopeContainerKolos::after{
+  /* content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -10%;
+  bottom: 0; */
+  /* background-image: url('/pngwing35.png'); */
+  /* background-size: 100% 100%; */
+  /* background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1; */
+  /* background-position: left bottom; */
+  /* opacity: 0.7; */
+  /* transform:rotate(-58deg); */
+  /* animation: cardSlideOut 2s ease-out ; */
+  /* transform: translateX(100%);
+    animation-name: slideInUpTwo;
+    animation-duration: 1.3s;
+    animation-timing-function: ease-out;
+    animation-delay: 0.3s;
+    animation-iteration-count: 1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards; Recommended for start/end states */
 }
 
 /* Add these @keyframes to your CSS file */
@@ -109,7 +142,16 @@
     0% { transform:  rotate(-18deg); opacity: 0; }
   25% { transform:  rotate(-10deg);opacity: 0.2; }
   50% { transform:  rotate(-20deg); opacity: 0.5;}
-  100% { transform: translateY(-5px) rotate(-58deg);opacity: 1; }
+  100% { transform: translateY(-50px)  rotate(-68deg);opacity: 1; }
+}
+
+@keyframes slideInUpTwo {
+    /* from { transform:translateX(50px) rotate(-180deg); opacity: 0; }
+    to { transform: rotate(-58deg); opacity: 1; } */
+    0% { transform:  rotate(-18deg); opacity: 0; }
+  25% { transform:  rotate(-10deg);opacity: 0.2; }
+  50% { transform:  rotate(-20deg); opacity: 0.5;}
+  100% { transform: translateY(-5px) rotate(68deg);opacity: 1; }
 }
 
   
@@ -200,6 +242,7 @@
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   animation: envelopeEntrance 2s ease-out 0.5s both, envelopeFloat 4s ease-in-out infinite 2.5s;
+  /* z-index: 5; */
   /* filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.3)); */
 }
 
@@ -342,7 +385,7 @@
     0 20px 50px rgba(0, 0, 0, 0.4),
     inset 0 2px 10px rgba(255, 255, 255, 0.6); */
   animation: cardSlideOut 2s ease-out forwards;
-  z-index: 2;
+  z-index: 9999;
 
   /* overflow: hidden; */
 }
@@ -379,6 +422,7 @@
   /* background-position:26.5rem; */
   background-position: center;
   border-radius: 1rem;
+  z-index: 9999;
   /* box-shadow: 
     0 20px 50px rgba(0, 0, 0, 0.4),
     inset 0 2px 10px rgba(255, 255, 255, 0.6); */
@@ -391,7 +435,7 @@
   left: 8px;
   right: 8px;
   bottom: 8px;
-  background-image: url('/hq720.jpg');
+  /* background-image: url('/hq720.jpg'); */
   background-position: 100% 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -403,16 +447,16 @@
 }
 
 .coupleNames {
-  font-family: 'Georgia', serif;
+  font-family: 'Great_Vibes', cursive;
   font-size: 3rem;
-  color: #070606;
+  color: #880505;
   margin: 0 0 12px 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); */
   font-weight: bold;
-  background: linear-gradient(45deg, #5233df, #dc143c);
+  /* background: linear-gradient(45deg, #5233df, #dc143c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background-clip: text; */
   z-index: 5;
 }
 

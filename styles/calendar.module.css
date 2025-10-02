@@ -11,7 +11,7 @@
 .header { text-align: center; margin-bottom: 8px; }
 .monthTitle { 
   font-family: 'Georgia', serif; 
-  color: #8b0000; 
+  color: red; 
   font-weight: 700; 
   text-transform: capitalize; 
   font-size: 1.2rem;
@@ -28,7 +28,7 @@
 .weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 6px; }
 .weekday { 
   font-size: 1rem; 
-  color: #2f4f4f; 
+  color: black; 
   text-align: center;
   opacity: 0;
   transform: translateY(-10px);
@@ -59,10 +59,10 @@
 .empty { width: 100%; height: 100%; }
 
 .day { position: relative; width: 38px; height: 38px; display:flex; align-items:center; justify-content:center; border-radius:8px; }
-.dayNumber { font-family: 'Georgia', serif; color: #2f4f4f; font-size: 2rem; font-weight: 700;}
+.dayNumber { font-family: 'Georgia', serif; color: black  ; font-size: 2rem; font-weight: 700;}
 
 .highlighted { border: 2px dashed rgba(220,20,60,0.25); background: linear-gradient(45deg, rgba(255,240,240,0.9), rgba(255,250,240,0.9)); }
-.highlighted .dayNumber { color: #8b0000; font-weight:700; }
+.highlighted .dayNumber { color: red; font-weight:700; }
 .highlighted .heart { position:absolute; right:-6px; top:-6px; font-size:14px; transform:translate(0,0); }
 
 @media (max-width: 768px) {

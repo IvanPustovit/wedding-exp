@@ -29,7 +29,7 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
 
   return (
     <div className={styles.envelopeContainer}>
-    {isOpening && <div className={styles.envelopeContainerKolos}></div>}
+    {/* {isOpening && <div className={styles.envelopeContainerKolos}></div>} */}
 
       <div className={styles.ukrainianPattern}></div>
       
@@ -52,16 +52,21 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
             {/* <span className={styles.sealText}>💕</span> */}
           {/* </div> */}
         </div>
-        {isOpening && (
+        {isOpening && (<>
+    <div className={styles.envelopeContainerKolos}>
+    <img src="/pngwing35.png" alt="kolos" className={styles.kolosImage2} />
+    <img src="/pngwing3.png" alt="kolos" className={styles.kolosImage} />
+    </div>
           <div className={styles.invitationCard}>
+
             <div className={styles.cardContent}>
               <h3 className={styles.coupleNames}>Запрошення від</h3>
               <h3 className={styles.coupleNames}>Миколи & Ольги</h3>
              
-              <div className={styles.ornament}>🌻 💙 💛 🌻</div>
+              {/* <div className={styles.ornament}>🌻 💙 💛 🌻</div> */}
              
             </div>
-          </div>
+          </div></>
         )}
       </div>
       {!isClicked && (
