@@ -21,9 +21,9 @@ const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({ onOpen }) => {
       // }, 2000);
       
       // Redirect after 5 seconds total
-      // setTimeout(() => {
-      //   onOpen();
-      // }, 2000);
+      setTimeout(() => {
+        onOpen();
+      }, 2000);
     }
   };
 
