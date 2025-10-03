@@ -25,8 +25,6 @@ const Wedding: React.FC = () => {
     whoIs: ''
   });
 
-const [name, setName] = useState('');
-  const [attending, setAttending] = useState(true);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
