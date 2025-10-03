@@ -1,57 +1,55 @@
-// app/api/confirmations/route.ts
-import { MongoClient } from 'mongodb';
+// app/api/confirm/route.ts
 import { NextResponse } from 'next/server';
 
-// Інтерфейс для даних
 interface ConfirmationData {
-  guestName: string;
-  invitationType: string;
-  comments: string;
+  name: string;
+  attending: boolean;
 }
-
-// Кешування клієнта MongoDB
-let client: MongoClient;
-let clientPromise: Promise<MongoClient>;
-
-// if (!process.env.MONGO_URI) {
-//   console.error('MONGO_URI is not defined');
-//   throw new Error('MONGO_URI is not defined in environment variables');
-// }
-
-// if (process.env.NODE_ENV === 'development') {
-//   if (!(global as any)._mongoClientPromise) {
-//     client = new MongoClient(process.env.MONGO_URI);
-//     (global as any)._mongoClientPromise = client.connect();
-//   }
-//   clientPromise = (global as any)._mongoClientPromise;
-// } else {
-//   client = new MongoClient(process.env.MONGO_URI);
-//   clientPromise = client.connect();
-// }
 
 export async function POST(req: Request) {
   try {
-    // const client = await clientPromise;
-    // const db = client.db('wedding');
-    // const data = await req.json() as ConfirmationData;
+    const data = await req.json() as ConfirmationData;
+    const { name, attending } = data;
 
     // Валідація даних
-    // if (!data.guestName || typeof data.guestName !== 'string') {
-    //   return NextResponse.json({ error: 'Ім’я гостя обов’язкове' }, { status: 400 });
-    // }
-    // if (!['guest', 'vip'].includes(data.invitationType)) {
-    //   return NextResponse.json({ error: 'Невалідний тип запрошення' }, { status: 400 });
-    // }
-    // if (data.comments && typeof data.comments !== 'string') {
-    //   return NextResponse.json({ error: 'Коментарі повинні бути рядком' }, { status: 400 });
-    // }
+    if (!name || typeof name !== 'string') {
+      return NextResponse.json({ error: 'Ім’я гостя обов’язкове' }, { status: 400 });
+    }
 
-    // await db.collection('confirmations').insertOne({
-    //   guestName: data.guestName,
-    //   invitationType: data.invitationType,
-    //   comments: data.comments || '',
-    //   createdAt: new Date(),
-    // });
+    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+
+    if (!botToken || !chatId) {
+      console.error('Telegram bot token or chat ID is not defined in environment variables');
+      // Повертаємо успіх, щоб не блокувати користувача, але логуємо помилку
+      return NextResponse.json({ success: true });
+    }
+
+    const message = `Нове підтвердження:
+
+Ім'я: ${name}
+Присутність: ${attending ? 'Так' : 'Ні'}`;
+
+    const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    const res = await fetch(telegramApiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+      }),
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      console.error('Failed to send Telegram message:', errorData);
+    }
+
+    // Тут ви можете додати логіку для збереження в базу даних, якщо потрібно
+    // наприклад, розкоментувавши та адаптувавши ваш існуючий код.
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -60,4 +58,4 @@ export async function POST(req: Request) {
   }
 }
 
-export const dynamic = 'force-dynamic'; // Ensure dynamic rendering in Next.js 15
+export const dynamic = 'force-dynamic';
