@@ -25,7 +25,8 @@ const Wedding: React.FC = () => {
     whoIs: ''
   });
 
-console.log(guestForm);
+const [name, setName] = useState('');
+  const [attending, setAttending] = useState(true);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -52,10 +53,14 @@ console.log(guestForm);
     setGuestForm(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem('weddingGuestResponse', JSON.stringify(guestForm));
-    alert('Дякуємо за підтвердження! Ваша відповідь збережена.');
+    const res = await fetch('/api/confirm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(guestForm),
+    });
+    if (res.ok) alert('Дякуємо за підтвердження!');
   };
 
   const renderAnimatedText = (text: string, delay: number = 50) => {

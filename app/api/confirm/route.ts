@@ -3,14 +3,16 @@ import { NextResponse } from 'next/server';
 
 interface ConfirmationData {
   name: string;
-  attending: boolean;
+  attendance: string;
+  whoIs: string;
+  guests: string;
 }
 
 export async function POST(req: Request) {
   try {
     const data = await req.json() as ConfirmationData;
-    const { name, attending } = data;
-
+    const { name, attendance } = data;
+// console.log(data)
     // Валідація даних
     if (!name || typeof name !== 'string') {
       return NextResponse.json({ error: 'Ім’я гостя обов’язкове' }, { status: 400 });
@@ -19,6 +21,8 @@ export async function POST(req: Request) {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
+    // console.log(botToken, chatId)
+
     if (!botToken || !chatId) {
       console.error('Telegram bot token or chat ID is not defined in environment variables');
       // Повертаємо успіх, щоб не блокувати користувача, але логуємо помилку
@@ -26,9 +30,11 @@ export async function POST(req: Request) {
     }
 
     const message = `Нове підтвердження:
-
 Ім'я: ${name}
-Присутність: ${attending ? 'Так' : 'Ні'}`;
+Присутність: ${attendance === 'yes'? 'Так' : attendance === 'yes+'? 'Так+1': 'Ні'}
+З чиєї ви сторони: ${data.whoIs == 'female'? 'нареченой': 'нареченого'}
+З ким ви будете: ${data.guests}`
+
 
     const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
