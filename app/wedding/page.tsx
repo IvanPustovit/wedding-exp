@@ -326,8 +326,8 @@ console.log(guestForm);
                 </div>
           </CardContent>
         <div className={`{styles.detailItem} ${styles.finalText}` }>
-          <p>{renderAnimatedText("З нетерпінням чекаємо Вас! <br/> Ваші Оля та Коля 💕")}</p>
-          <div className={styles.ornament}>🌻 💙 💛 🌻</div>
+          <p>{renderAnimatedText("З нетерпінням чекаємо Вас! <br/> Ваші Оля та Коля ")}</p>
+          {/* <div className={styles.ornament}>🌻 💙 💛 🌻</div> */}
         </div>
         </Card>
       </section>
