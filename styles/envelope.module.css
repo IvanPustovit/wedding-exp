@@ -447,7 +447,7 @@
 }
 
 .coupleNames {
-  font-family: 'Great_Vibes', cursive;
+  font-family: var(--font-great-vibes), cursive;
   font-size: 3rem;
   color: #880505;
   margin: 0 0 12px 0;

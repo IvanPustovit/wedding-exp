@@ -92,7 +92,7 @@
 }
 
 .coupleTitle {
-  font-family: 'Great_Vibes', cursive;
+  font-family: var(--font-great-vibes), cursive;
   /* responsive headline: scales with viewport but stays within reasonable limits */
   font-size: clamp(5rem, 14vw, 12rem);
   color: red;
@@ -106,7 +106,7 @@
 }
 
 .weddingDate {
-  font-family: 'Great_Vibes', cursive;
+  font-family: var(--font-great-vibes), cursive;
   font-size: 1.8rem;
   font-weight: 800;
   color: red;
@@ -320,6 +320,7 @@ color: black;
 }
 
 .dresscodeText{
+  /* font-family: var(--font-caveat), cursive; */
   width: 50%;
   position: absolute;
   top: 80%;
@@ -337,10 +338,12 @@ color: black;
 .desireDetails h4{
   font-size: 2rem !important;
   color: red !important;
+  font-family: var(--font-great-vibes),cursive !important;
 } 
 
 .desireDetails p{
   font-size: 1.8rem !important;
+  font-family: var(--font-caveat), cursive !important;
 }
 
 .guestFormSection{
@@ -364,7 +367,8 @@ color: black;
 }
 
 .sectionTitle {
-  font-family: 'Great_Vibes', cursive;
+  /* font-family: 'Great_Vibes', cursive; */
+  font-family: var(--font-great-vibes), cursive;
   font-size: 1.9rem; /* mobile-first */
   color: red;
   text-align: center;
@@ -462,7 +466,7 @@ color: black;
   right: 0;
   width: 60%;
   margin: 0 auto;
-  font-family: 'Great_Vibes', cursive;
+  font-family: var(--font-great-vibes), cursive;
   font-size: 2.5rem;
   font-weight: 600;
   color: black;
@@ -494,7 +498,7 @@ color: black;
 }
 
 .detailItem h4 {
-  font-family: 'Great_Vibes', cursive;
+  font-family: var(--font-caveat), cursive;
   font-size: 1.2rem;
   color: #070707;
   margin: 0 0 0 0;
@@ -535,6 +539,7 @@ color: black;
 }
 
 .formGroup {
+  font-family: var(--font-caveat), cursive;
   margin-bottom: 20px;
 }
 
@@ -559,7 +564,7 @@ color: black;
   padding: 14px;
   border: none;
   /* border-radius: 8px; */
-  font-family: 'caveat', cursive;
+  font-family: var(--font-caveat), cursive;
   font-weight: bold;
   transition: all 0.22s ease;
 }

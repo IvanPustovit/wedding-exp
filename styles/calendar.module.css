@@ -59,7 +59,7 @@
 .empty { width: 100%; height: 100%; }
 
 .day { position: relative; width: 38px; height: 38px; display:flex; align-items:center; justify-content:center; border-radius:8px; }
-.dayNumber { font-family: 'Georgia', serif; color: black  ; font-size: 2rem; font-weight: 700;}
+.dayNumber { font-family: var(--font-caveat), serif; color: black  ; font-size: 2rem; font-weight: 700;}
 
 .highlighted { border: 2px dashed rgba(220,20,60,0.25); background: linear-gradient(45deg, rgba(255,240,240,0.9), rgba(255,250,240,0.9)); }
 .highlighted .dayNumber { color: red; font-weight:700; }
